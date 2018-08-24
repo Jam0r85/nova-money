@@ -1,0 +1,31 @@
+{
+    "name": "Jam0r85/nova-money",
+    "description": "A Laravel Nova field.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "brick/money": "^0.3.3",
+        "symfony/intl": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jam0r85\\NovaMoney\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jam0r85\\NovaMoney\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
