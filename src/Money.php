@@ -64,8 +64,8 @@ class Money extends Field
      */
     protected function loadDefaults()
     {
-        // $this->currency = 'GBP';
-        $this->currency = strtoupper(Cashier::usesCurrency());
+        $this->currency = 'GBP';
+        // $this->currency = strtoupper(Cashier::usesCurrency());
 
         $this->withMeta([
             'minor_units' => $this->minorUnits,
@@ -113,7 +113,7 @@ class Money extends Field
      *
      * @return $this
      */
-    public function notMinorUnits()
+    public function notMinor()
     {
         $this->minorUnits = false;
 
