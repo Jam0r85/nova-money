@@ -2,9 +2,10 @@
 
 Custom money field for a Laravel Nova application I am working on. The default Currency field provided by Nova didn't quite cut the mustard for me so ended up creating this.
 
-Formats the money value when creating/updating and displaying using the Brick\Money\Money package and adds a helpful currency icon to the create/edit field so you know what currency you are entering!
+Formats the money value when creating/updating and displaying using the Brick\Money\Money package and adds a helpful currency icon to the create/edit field so you know what currency you should be using.
 
 ![Screenshot](docs/detail.jpg)
+![Screenshot](docs/input-field.jpg)
 
 ## Installing
 
@@ -15,7 +16,7 @@ compser require Jam0r85/nova-money
 ```
 
 ## Using
-In your \App\Nova resource file, add the following into your Fields method:
+In your nova resource file, add the following into your Fields method:
 
 ```
 use Jam0r85\NovaMoney\Money;
@@ -38,7 +39,7 @@ The default currency is **GBP** but can be changed per field using the currency(
 ```
 Money::make('Price')->currency('USD');
 ```
-The default locale is **en_GB** but can be changed per field using the locale() method:-
+The default locale is the one set as per the Laravel config('app.locale') file but can be changed per field using the locale() method:-
 ```
 Money::make('Price')->locale('en_US');
 ```
