@@ -17,21 +17,21 @@ class Money extends Field
     public $component = 'nova-money';
 
     /**
-     * The value is stored in minor units.
+     * The values are stored as minor units.
      *
      * @var boolean
      */
     public $minorUnits = true;
 
     /**
-     * The locale the field will be displayed in.
+     * The locale the field will be displayed using.
      *
      * @var string
      */
     public $locale;
 
     /**
-     * The currency to be used when displaying the value.
+     * The currency to be used.
      *
      * @var string
      */
@@ -73,7 +73,7 @@ class Money extends Field
     }
 
     /**
-     * Grab the display for the field.
+     * Format the value and return it to be displayed.
      *
      * @param  string  $value
      * @return mixed
@@ -121,7 +121,7 @@ class Money extends Field
     
 
     /**
-     * The currency value that represents the values.
+     * Overwrite the currency to be used.
      *
      * @param  string  $currency
      * @return $this

@@ -1,8 +1,10 @@
 # Money Field for Laravel Nova
 
-Custom money field for a Laravel Nova application I am working on. The default Currency field provided by Nova didn't quite cut the mustard for me so ended up creating this.
+A custom money field for a Laravel\Nova application I am working on. The default Currency field provided by Nova didn't quite cut the mustard for me so ended up creating this.
 
-Formats the money value when creating/updating and displaying using the Brick\Money\Money package and adds a helpful currency icon to the create/edit field so you know what currency you should be using.
+- Works with minor units (both updating and displaying)
+- Displays the amount with the correct currency sign and in the proper locale format
+- Adds the currency sign to the create/update field
 
 ![Screenshot](docs/detail.jpg)
 ![Screenshot](docs/input-field.jpg)
@@ -31,7 +33,7 @@ public function fields (Request $request)
 ```
 
 ## Options
-You can optionally add the column name to be used in storage if different from the display name as per any Nova field:
+You can optionally add the column name to be used if different from the display name as per any Nova field:
 ```
 Money::make('Price', 'price_column');
 ```
@@ -47,4 +49,7 @@ By default we assume you are storing values as minor units (eg. £100 = 10000p) 
 ```
 Money::make('Price')->notMinor();
 ```
-This will automatically format all entered values into minor units so remember to remove/update any laravel setAttribute methods on your models!
+This will automatically format all entered values into minor units so remember to remove any laravel set/get attribute methods on your models!
+
+## Advanced
+The defaults loaded for this package (Currency, Locale, etc) are loaded within the 'loadDefaults' method within src\Money.php
