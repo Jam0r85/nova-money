@@ -30,10 +30,6 @@ export default {
 
     props: ['resourceName', 'resourceId', 'field'],
 
-    created() {
-      console.log(this.field);
-    },
-
     computed: {
         /**
          * Check to see if we are using minor units.
