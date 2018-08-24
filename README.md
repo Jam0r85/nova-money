@@ -2,6 +2,10 @@
 
 Custom money field for a Laravel Nova application I am working on. The default Currency field provided by Nova didn't quite cut the mustard for me so ended up creating this.
 
+Formats the money value when creating/updating and displaying using the Brick\Money\Money package and adds a helpful currency icon to the create/edit field so you know what currency you are entering!
+
+![Screenshot](docs/detail.jpg)
+
 ## Installing
 
 You can install the package into your Nova application via composer:
@@ -14,6 +18,8 @@ compser require Jam0r85/nova-money
 In your \App\Nova resource file, add the following into your Fields method:
 
 ```
+use Jam0r85\NovaMoney\Money;
+
 public function fields (Request $request)
 {
 	return [
@@ -22,6 +28,8 @@ public function fields (Request $request)
 	];
 }
 ```
+
+## Options
 You can optionally add the column name to be used in storage if different from the display name as per any Nova field:
 ```
 Money::make('Price', 'price_column');
@@ -38,4 +46,3 @@ By default we assume you are storing values as minor units (eg. £100 = 10000p) 
 ```
 Money::make('Price')->notMinor();
 ```
-

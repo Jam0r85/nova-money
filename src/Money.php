@@ -3,7 +3,6 @@
 namespace Jam0r85\NovaMoney;
 
 use Brick\Money\Money as MoneyMaker;
-use Laravel\Cashier\Cashier;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Symfony\Component\Intl\Intl;
@@ -64,8 +63,8 @@ class Money extends Field
      */
     protected function loadDefaults()
     {
+        $this->locale = config('app.locale');
         $this->currency = 'GBP';
-        // $this->currency = strtoupper(Cashier::usesCurrency());
 
         $this->withMeta([
             'minor_units' => $this->minorUnits,
@@ -81,15 +80,13 @@ class Money extends Field
      */
     protected function getDisplay($value)
     {
-        $locale = $this->locale ?? config('app.locale');
-
         if ($this->minorUnits) {
             $money = MoneyMaker::ofMinor($value, $this->currency);
         } else {
             $money = MoneyMaker::of($value, $this->currency);
         }
 
-        return $money->formatTo($locale);
+        return $money->formatTo($this->locale);
     }
 
     /**
